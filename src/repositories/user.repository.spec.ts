@@ -64,19 +64,4 @@ describe('User Repository', () => {
       expect(findSpy).toHaveBeenCalledWith({ email: 'email' });
     });
   });
-
-  it('should mark email as confirmed', () => {
-    const updateSpy = jest
-      .spyOn(repository, 'update')
-      .mockResolvedValue('Promise' as never);
-
-    const rs = repository.markEmailAsConfirmed('email');
-
-    expect(rs).resolves.toEqual('Promise');
-    expect(updateSpy).toHaveBeenCalledTimes(1);
-    expect(updateSpy).toHaveBeenCalledWith(
-      { email: 'email' },
-      { isEmailConfirmed: true },
-    );
-  });
 });

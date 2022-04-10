@@ -25,17 +25,4 @@ export class UserRepository extends Repository<User> {
 
     return user;
   }
-
-  async getUserByUUID(id: string) {
-    const user = await this.findOne({ id });
-
-    if (!user) {
-      throw new HttpException(
-        'User with this id does not exist',
-        HttpStatus.NOT_FOUND,
-      );
-    }
-
-    return user;
-  }
 }

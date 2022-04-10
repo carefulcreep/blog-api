@@ -11,9 +11,9 @@ import { PostGetUserResponseDto } from '../posts/dto/post.get-all-user.response.
 @EntityRepository(Post)
 export class PostsRepository extends Repository<any> {
   async addEntity(body): Promise<PostCreateResponseDto> {
-    const createdParser = this.create(body);
+    const createdPost = this.create(body);
 
-    return this.save(createdParser);
+    return this.save(createdPost);
   }
 
   async patchEntity(id, body, requestUserId): Promise<PostPatchResponseDto> {
