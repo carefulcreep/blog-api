@@ -30,12 +30,15 @@ describe('AdminController', () => {
 
   it('should delete a post', async () => {
     const mockId = 'id';
-    const mockRequestUserId = 'userId';
     const mockDeletePostSpy = jest
       .spyOn(service, 'deletePost')
       .mockResolvedValueOnce(undefined);
-
-    const response = service.deletePost(mockId, mockRequestUserId);
+    const mockRequest = {
+      user: {
+        id: 'userId',
+      },
+    };
+    const response = controller.deletePost(mockId, mockRequest);
 
     await expect(response).resolves.toBeUndefined();
     expect(mockDeletePostSpy).toHaveBeenCalledTimes(1);
