@@ -72,7 +72,7 @@ export class PostsRepository extends Repository<any> {
 
   async getUserPosts(userid, requestUserId): Promise<PostGetUserResponseDto[]> {
     let entities = await this.find({
-      where: [{ createdBy: userid }],
+      where: { createdBy: userid },
     });
 
     if (entities[0]?.createdBy != requestUserId) {

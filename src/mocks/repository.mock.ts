@@ -6,4 +6,5 @@ export const REPOSITORY_MOCK = {
   update: jest.fn(),
   checkIfEmailExists: jest.fn(),
   findByIds: jest.fn(),
+  remove: jest.fn(),
 };

@@ -50,7 +50,7 @@ export class PostsController {
     @Body() body: PostCreateDto,
     @Request() req,
   ): Promise<PostCreateResponseDto> {
-    return this.postsService.add(body, req);
+    return this.postsService.add(body, req.user.id);
   }
 
   @ApiBearerAuth()

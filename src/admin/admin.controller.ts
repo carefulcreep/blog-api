@@ -1,13 +1,4 @@
-import {
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Put,
-  Query,
-  Request,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Delete, Param, Request, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 import { AdminService } from './admin.service';
@@ -22,7 +13,7 @@ export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
   @Delete('/:id')
-  deletePost(@Param('id') id: string, @Request() req): Promise<any> {
+  deletePost(@Param('id') id: string, @Request() req) {
     return this.adminService.deletePost(id, req.user.id);
   }
 }

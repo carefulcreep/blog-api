@@ -11,8 +11,11 @@ import { PostGetUserResponseDto } from './dto/post.get-all-user.response.dto';
 export class PostsService {
   constructor(public readonly parserRepository: PostsRepository) {}
 
-  add(body, req): Promise<PostCreateResponseDto> {
-    return this.parserRepository.addEntity({ ...body, createdBy: req.user.id });
+  add(body, requestUserId): Promise<PostCreateResponseDto> {
+    return this.parserRepository.addEntity({
+      ...body,
+      createdBy: requestUserId,
+    });
   }
 
   patch(id, body, requestUserId): Promise<PostPatchResponseDto> {

@@ -6,7 +6,7 @@ import { PostsRepository } from '../repositories/post.repository';
 export class AdminService {
   constructor(private readonly postRepository: PostsRepository) {}
 
-  async deletePost(id, requestUserId): Promise<any> {
+  async deletePost(id, requestUserId) {
     const entity = await this.postRepository.findByIds(id);
 
     if (
@@ -16,6 +16,6 @@ export class AdminService {
       throw new NotFoundException('This post is currently in private');
     }
 
-    return this.postRepository.remove(entity);
+    await this.postRepository.remove(entity);
   }
 }
